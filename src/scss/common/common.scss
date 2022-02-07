@@ -1,4 +1,49 @@
 // Заголовки, общие БЄМ блоки и проче...
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: rem(-10) rem(-6);
+
+    @media (min-width: $tablet) {
+        margin: rem(-10) rem(-12);
+    }
+}
+
+.col {
+    &-12,
+    &-sm-6,
+    &-md-6,
+    &-lg-6 {
+        width: 100%;
+        min-height: 1px;
+        padding: rem(10) rem(6);
+
+        @media (min-width: $tablet) {
+            padding: rem(10) rem(12);
+        }
+    }
+
+    &-sm-6 {
+        @media screen and (min-width: $mobileL) {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    }
+
+    &-md-6 {
+        @media screen and (min-width: $mobile) {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    }
+
+    &-lg-6 {
+        @media screen and (min-width: $tablet) {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    }
+}
 
 // Анимация
 @keyframes shake-bottom {
@@ -28,8 +73,441 @@
     }
 }
 
+@keyframes shake-bottom-center {
+    0%,
+    100% {
+        transform: rotate(0deg) translateY(-50%);
+        transform-origin: 50% 100%;
+    }
+    10% {
+        transform: rotate(2deg) translateY(-50%);
+    }
+    20%,
+    40%,
+    60% {
+        transform: rotate(-4deg) translateY(-50%);
+    }
+    30%,
+    50%,
+    70% {
+        transform: rotate(4deg) translateY(-50%);
+    }
+    80% {
+        transform: rotate(-2deg) translateY(-50%);
+    }
+    90% {
+        transform: rotate(2deg) translateY(-50%);
+    }
+}
+
+section {
+    @include adaptiveValue("padding-top", 40, 28);
+    @include adaptiveValue("padding-bottom", 40, 28);
+
+    &:first-child {
+        @include adaptiveValue("padding-top", 40, 24);
+    }
+    &:last-child {
+        @include adaptiveValue("padding-bottom", 80, 56);
+    }
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    @include adaptiveValue("font-size", 20, 16);
+    line-height: math.div(25, 20);
+    border-radius: em(30, 20);
+    padding: rem(16) rem(24);
+    background-color: $Pink;
+    color: $White;
+    transition: $transition ease all 0s;
+
+    @media (any-hover: hover) {
+        &:hover {
+            opacity: 0.8;
+            transform: translateY(rem(3));
+        }
+    }
+}
+
+h {
+    &1 {
+        font-weight: 700;
+        @include adaptiveValue("font-size", 48, 24);
+        line-height: math.div(61, 48);
+        letter-spacing: em(1.92, 48);
+    }
+    &2 {
+        font-weight: 700;
+        @include adaptiveValue("font-size", 24, 18);
+        line-height: math.div(30, 24);
+        letter-spacing: em(0.96, 24);
+    }
+    &3 {
+        font-weight: 700;
+        @include adaptiveValue("font-size", 20, 16);
+        line-height: math.div(25, 20);
+    }
+}
+
 img {
     display: block;
     max-width: 100%;
     height: auto;
+}
+
+._content {
+    @include adaptiveValue("font-size", 16, 14);
+    line-height: math.div(20, 16);
+
+    p {
+        margin: rem(16) 0;
+    }
+
+    ol,
+    ul {
+        display: grid;
+        gap: rem(16);
+        margin: rem(16) 0;
+
+        p {
+            margin: 0;
+            margin-left: rem(-16);
+        }
+    }
+
+    ol {
+        counter-reset: item;
+
+        li {
+            position: relative;
+            padding-left: rem(32);
+            list-style-type: none;
+
+            &::before {
+                content: counter(item);
+                counter-increment: item;
+                position: absolute;
+                left: 0;
+            }
+
+            & > ol {
+                counter-reset: subitem;
+
+                li {
+                    &::before {
+                        content: counter(item) "." counters(subitem, ".") " ";
+                        counter-increment: subitem;
+                    }
+                }
+            }
+        }
+
+        ol {
+            margin-top: 16px !important;
+
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+        }
+    }
+
+    ul {
+        padding-left: rem(16);
+
+        li {
+            list-style-type: disc;
+        }
+    }
+
+    :first-child {
+        margin-top: 0;
+    }
+    :last-child {
+        margin-bottom: 0;
+    }
+}
+
+._price-current {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+._price-old {
+    text-decoration-line: line-through;
+    color: $Gray;
+    white-space: nowrap;
+}
+
+.block__more {
+    margin-top: rem(16);
+    font-weight: 700;
+    font-size: rem(16);
+    line-height: math.div(20, 16);
+    color: $Green;
+    text-decoration: underline $Green from-font;
+    text-underline-offset: 3px;
+    transition: $transition ease text-decoration, $transition opacity 0s;
+
+    @media (any-hover: hover) {
+        &:hover {
+            opacity: 0.6;
+            text-decoration: underline transparent from-font;
+        }
+    }
+
+    &._icon-chevron {
+        text-decoration: none;
+        display: inline-flex;
+        flex-direction: row-reverse;
+
+        &::before {
+            margin-left: rem(8);
+        }
+    }
+
+    ._showmore-active & {
+        display: none;
+    }
+}
+
+._green {
+    color: $Green;
+}
+// БЭМ Блоки
+.social {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, rem(30));
+    gap: rem(24);
+    font-size: rem(30);
+
+    // .social__item
+    &__item {
+        display: flex;
+
+        a {
+            @media (any-hover: hover) {
+                transition: $transition ease transform, $transition color 0s;
+
+                &:hover {
+                    color: $Pink;
+                    transform: translateY(rem(3));
+                }
+            }
+        }
+    }
+}
+
+.title {
+    &:not(:last-child) {
+        @include adaptiveValue("margin-bottom", 40, 24);
+    }
+
+    // .title__container
+    &__container {
+    }
+
+    // .title__wrapper
+    &__wrapper {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        text-transform: uppercase;
+        @include adaptiveValue("min-height", 200, 60);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include adaptiveValue("border-radius", 360, 30);
+    }
+}
+
+.breadcrumbs {
+    &:not(:first-child) {
+        @include adaptiveValue("margin-top", 40, 24);
+    }
+    @include adaptiveValue("margin-bottom", 40, 24);
+    font-weight: 700;
+
+    // .breadcrumbs__container
+    &__container {
+    }
+
+    // .breadcrumbs__wrapper
+    &__wrapper {
+        display: flex;
+        align-items: center;
+
+        & > * {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+
+            &:not(:last-child) {
+                margin-right: rem(8);
+            }
+        }
+    }
+
+    // .breadcrumbs__link
+    &__link {
+        a:link {
+            text-decoration: underline $mainColor from-font;
+            text-underline-offset: 2px;
+            transition: $transition ease text-decoration 0s;
+
+            @media (any-hover: hover) {
+                &:hover {
+                    text-decoration: underline transparent from-font;
+                }
+            }
+        }
+    }
+
+    // .breadcrumbs__separator
+    &__separator {
+        color: $Gray;
+    }
+
+    // .breadcrumbs__title
+    &__title {
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:not(:first-child) {
+        @include adaptiveValue("margin-top", 80, 32);
+    }
+
+    // .pagination__item
+    &__item {
+        font-weight: 700;
+        color: $Gray;
+        transition: $transition ease transform, $transition color 0s;
+
+        &:not(:last-child) {
+            margin-right: rem(24);
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                &:not(._active) {
+                    color: $Green;
+                    transform: translateY(rem(2));
+                }
+            }
+        }
+
+        &._active {
+            color: $Green;
+        }
+
+        a {
+            padding: rem(10);
+            margin: rem(-10);
+        }
+    }
+}
+
+.support {
+    &:not(:last-child) {
+        @include adaptiveValue("margin-bottom", 80, 56);
+    }
+
+    // .support__container
+    &__container {
+        @media (min-width: $mobile) {
+            display: flex;
+            align-items: center;
+        }
+        @media (min-width: $tablet) {
+            max-width: rem(893);
+        }
+        @media (max-width:$mobile){
+             text-align: center; 
+        }
+    }
+
+    // .support__text
+    &__text {
+        @include adaptiveValue("font-size", 16, 14);
+
+        @media (min-width: $mobile) {
+            padding-right: rem(32);
+        }
+        @media (max-width:$mobile){
+             padding-bottom: rem(16); 
+        }
+    }
+
+    // .support__button
+    &__button {
+        white-space: nowrap;
+        flex-direction: row-reverse;
+        background-color: $Green;
+        padding: rem(8) rem(16);
+
+        &::before {
+            margin-left: rem(8);
+        }
+    }
+}
+
+// swiper ====================================================================================================
+.fraction-controll {
+    @include adaptiveValue("font-size", 24, 18);
+    line-height: math.div(30, 24);
+    color: $Gray;
+
+    // .fraction-controll__current
+    &__current {
+        color: $Pink;
+    }
+
+    // .fraction-controll__all
+    &__all {
+    }
+}
+
+.swiper {
+    // .swiper__button
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: rem(20);
+        color: $White;
+        background-color: $Pink;
+        z-index: 2;
+        cursor: pointer;
+        padding-top: rem(2);
+        padding-bottom: rem(2);
+
+        &.swiper-button-disabled {
+            opacity: 0.6;
+            cursor: no-drop;
+        }
+    }
+
+    // .swiper__button-prev
+    &__button-prev {
+        border-radius: rem(10) rem(10) 0 0;
+
+        &::before {
+            transform: rotate(180deg);
+        }
+    }
+
+    // .swiper__button-next
+    &__button-next {
+        border-radius: 0 0 rem(10) rem(10);
+    }
 }

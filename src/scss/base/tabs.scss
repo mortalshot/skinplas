@@ -2,21 +2,35 @@
 	// .tabs__navigation
 	&__navigation {
 		display: flex;
+		@include adaptiveValue("gap", 32, 24);
 	}
+
 	// .tabs__title
 	&__title {
-		border: 1px solid #eee;
-		padding: rem(10) rem(15);
-		border-radius: rem(5);
+		@include adaptiveValue("font-size", 24, 18);
+		line-height: math.div(30, 24);
+		text-decoration: underline transparent from-font;
+		text-underline-offset: 3px;
+		transition: $transition ease text-decoration 0s;
+
+		@media (any-hover: hover) {
+			&:not(._tab-active) {
+				&:hover {
+					text-decoration: underline $mainColor from-font;
+				}
+			}
+		}
+
 		&._tab-active {
-			border: 1px solid #000;
+			color: $Green;
+			text-decoration: underline $Green from-font;
 		}
 	}
+
 	// .tabs__content
 	&__content {
-		border: 1px solid #eee;
-		padding: rem(10) rem(15);
 	}
+
 	// .tabs__body
 	&__body {
 	}

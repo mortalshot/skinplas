@@ -83,6 +83,7 @@ export function headerScroll() {
 		clearTimeout(timer);
 		if (scrollTop >= startPoint) {
 			!header.classList.contains('_header-scroll') ? header.classList.add('_header-scroll') : null;
+			header.setAttribute("data-lp", 0);
 			main.style.paddingTop = header.offsetHeight + 'px';
 			if (headerShow) {
 				if (scrollTop > scrollDirection) {
@@ -99,6 +100,7 @@ export function headerScroll() {
 		} else {
 			header.classList.contains('_header-scroll') ? header.classList.remove('_header-scroll') : null;
 			main.style.paddingTop = 0;
+			header.removeAttribute("data-lp");
 
 			if (headerShow) {
 				header.classList.contains('_header-show') ? header.classList.remove('_header-show') : null;

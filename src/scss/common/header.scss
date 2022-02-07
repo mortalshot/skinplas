@@ -32,6 +32,7 @@
 .logo {
 	// .logo__link
 	&__link {
+		display: block;
 		@media (any-hover: hover) {
 			transition: $transition ease opacity 0s;
 
@@ -59,6 +60,7 @@
 		}
 
 		&_empty {
+			// .control__amount
 			.control__amount {
 				opacity: 0;
 			}
@@ -85,14 +87,227 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: rem(15);
-		height: rem(15);
+		width: rem(19);
+		height: rem(19);
+		border: 2px solid $White;
 		transition: $transition ease opacity 0s;
 	}
 }
 
+.small-basket {
+	@media (any-hover: hover) {
+		&:hover {
+			.small-basket__preview {
+				bottom: 0;
+				opacity: 1;
+				pointer-events: all;
+				visibility: visible;
+			}
+		}
+	}
+
+	@media (min-width: $mobile) {
+		position: relative;
+
+		// .small-basket__link
+		&__link {
+		}
+
+		// .small-basket__preview
+		&__preview {
+			position: absolute;
+			right: 0;
+			bottom: rem(10);
+			transform: translateY(100%);
+			opacity: 0;
+			pointer-events: none;
+			visibility: hidden;
+			padding-top: rem(10);
+			transition: $transition ease all 0s;
+		}
+
+		// .small-basket__wrapper
+		&__wrapper {
+			background-color: $White;
+			box-shadow: $Shadow;
+			z-index: 3;
+			border-radius: rem(10);
+			width: rem(348);
+			padding: rem(24);
+		}
+
+		// .small-basket__list
+		&__list {
+			border-bottom: 1px solid $Gray;
+			padding-bottom: rem(24);
+			margin-bottom: rem(24);
+			display: grid;
+			gap: rem(24);
+			scrollbar-width: thin;
+			max-height: rem(220);
+			overflow-y: auto;
+			overflow-x: hidden;
+
+			&::-webkit-scrollbar {
+				width: rem(6);
+			}
+			&::-webkit-scrollbar-track {
+				background-color: $LGray;
+				border-radius: 3px;
+			}
+			&::-webkit-scrollbar-thumb {
+				border-radius: 3px;
+				background-color: $Pink;
+			}
+		}
+
+		// .small-basket__item
+		&__item {
+			display: grid;
+			grid-template-columns: rem(80) 1fr;
+			align-items: center;
+			gap: rem(16);
+		}
+
+		// .small-basket__item-icon
+		&__item-icon {
+			position: relative;
+			flex: 0 0 rem(80);
+			padding-bottom: rem(80);
+			transition: $transition ease opacity 0s;
+
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			@media (any-hover: hover) {
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+		}
+
+		// .small-basket__body
+		&__body {
+			display: grid;
+			grid-template-columns: 1fr rem(28);
+			grid-template-areas:
+				"price price"
+				"name name"
+				"remove quantity";
+			gap: rem(8);
+		}
+
+		// .small-basket__price
+		&__price {
+			display: flex;
+			align-items: center;
+			grid-area: price;
+
+			& > * {
+				&:not(:last-child) {
+					margin-right: rem(24);
+				}
+			}
+		}
+
+		// .small-basket__price-current
+		&__price-current {
+			font-size: rem(20);
+			line-height: math.div(25, 20);
+		}
+
+		// .small-basket__price-old
+		&__price-old {
+		}
+
+		// .small-basket__name
+		&__name {
+			grid-area: name;
+
+			&:link {
+				text-decoration: underline transparent from-font;
+				text-underline-offset: 1px;
+				transition: $transition ease text-decoration 0s;
+
+				@media (any-hover: hover) {
+					&:hover {
+						text-decoration: underline $mainColor from-font;
+					}
+				}
+			}
+		}
+
+		// .small-basket__quantity
+		&__quantity {
+			font-weight: 700;
+			grid-area: quantity;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+		}
+
+		// .small-basket__remove
+		&__remove {
+			grid-area: remove;
+
+			a,
+			button {
+				font-weight: 700;
+				font-size: rem(14);
+				color: $Red;
+				transition: $transition ease opacity 0s;
+
+				@media (any-hover: hover) {
+					&:hover {
+						opacity: 0.6;
+					}
+				}
+			}
+		}
+
+		// .small-basket__footer
+		&__footer {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		// .small-basket__total
+		&__total {
+			display: grid;
+			gap: rem(8);
+		}
+
+		// .small-basket__caption
+		&__caption {
+		}
+
+		// .small-basket__total-price
+		&__total-price {
+			font-weight: 700;
+			font-size: rem(20);
+			line-height: math.div(25, 20);
+		}
+
+		// .small-basket__btn
+		&__btn {
+			font-size: rem(18);
+			line-height: math.div(23, 18);
+			padding: rem(12) rem(20);
+		}
+	}
+}
+
 .header {
+	background-color: $White;
 	box-shadow: $Shadow;
+	z-index: 5;
 
 	&._header-scroll {
 		position: fixed;
@@ -116,27 +331,29 @@
 		align-items: center;
 		justify-content: space-between;
 		gap: rem(40);
-		padding-top: rem(18);
-		padding-bottom: rem(18);
+		@include adaptiveValue("padding-top", 18, 12);
+		@include adaptiveValue("padding-bottom", 18, 12);
 	}
 
+	// .header__mobile
 	&__mobile {
 		display: grid;
-		align-items: center;
+		align-items: flex-start;
 		height: 100%;
 		padding: 0 rem(math.div($containerPadding, 2));
 		overflow-y: auto;
-		background: #dadbdf;
+		background: $White;
 		position: fixed;
 		z-index: 2;
 		top: -100%;
 		left: 0;
 		right: 0;
+		@include adaptiveValue("padding-top", 97, 80, 768, 375, 1);
 		transition: 0.5s ease top 0s;
 
 		&::before {
 			content: "";
-			background: #dadbdf;
+			background: $White;
 			@include adaptiveValue("height", 68, 50);
 			position: fixed;
 			z-index: 2;
@@ -155,15 +372,33 @@
 		}
 	}
 
+	// .header__mobile-wrapper
+	&__mobile-wrapper {
+		@media (max-width: $mobile) {
+			display: grid;
+			justify-content: flex-start;
+
+			& > :not(:last-child) {
+				padding-bottom: rem(40);
+				margin-bottom: rem(40);
+				border-bottom: 1px solid $Gray;
+			}
+		}
+	}
+
 	// .header__logo
 	&__logo {
 		@include adaptiveValue("max-width", 142, 91, 991.98, 375, 1);
+		position: relative;
+		z-index: 2;
 	}
 
 	// .header__auth
 	&__auth {
 		font-size: rem(22);
 		line-height: 1;
+		position: relative;
+		z-index: 2;
 
 		@media (min-width: $mobile) {
 			display: none;
@@ -193,10 +428,26 @@
 			flex-wrap: wrap;
 			align-items: center;
 		}
+		@media (max-width: $mobile) {
+			gap: rem(40);
+		}
 
 		._desktop {
 			@media (max-width: $mobile) {
 				display: none;
+			}
+		}
+
+		// .menu__personal
+		&__personal {
+			a {
+				color: $Pink;
+
+				@media (any-hover: hover) {
+					&:hover {
+						text-decoration: underline $Pink from-font !important;
+					}
+				}
 			}
 		}
 
@@ -210,7 +461,7 @@
 			transition: $transition ease text-decoration 0s;
 
 			@media (max-width: $mobile) {
-				font-size: rem(18);
+				font-size: rem(18) !important;
 			}
 
 			&._active {
@@ -226,7 +477,9 @@
 		}
 
 		a {
-			color: $Gray;
+			@media (min-width: $mobile) {
+				color: $Gray;
+			}
 
 			&:not(._active) {
 				@media (any-hover: hover) {
@@ -249,6 +502,10 @@
 	// .header__bottom-menu
 	&__bottom-menu {
 		a {
+			@media (min-width: $mobile) {
+				text-transform: uppercase;
+			}
+
 			&:not(._active) {
 				@media (any-hover: hover) {
 					&:hover {
@@ -275,11 +532,12 @@
 //Burger
 .icon-menu {
 	display: none;
+
 	@media (max-width: $mobile) {
 		display: block;
 		position: relative;
-		width: 30px;
-		height: 18px;
+		width: rem(21);
+		height: rem(12);
 		cursor: pointer;
 		z-index: 5;
 		span,
@@ -300,6 +558,7 @@
 			bottom: 0px;
 		}
 		span {
+			width: 50%;
 			top: calc(50% - 1px);
 		}
 		.menu-open & {
@@ -313,6 +572,64 @@
 			&::after {
 				transform: rotate(45deg);
 				bottom: calc(50% - 1px);
+			}
+		}
+	}
+}
+
+.bottom-menu {
+	@media (min-width: $mobile) {
+		display: none;
+	}
+	@media (max-width: $mobile) {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: $White;
+		box-shadow: $Shadow;
+		height: rem(56);
+		display: flex;
+		align-items: center;
+		z-index: 11;
+
+	}
+	// .bottom-menu__list
+	&__list {
+		width: 100%;
+		display: grid;
+		align-items: center;
+		justify-content: space-between;
+		grid-template-columns: repeat(4, max-content);
+		@include adaptiveValue("padding-left", 135, 20, 1280, 768, 1);
+		@include adaptiveValue("padding-right", 135, 20, 1280, 768, 1);
+	}
+
+	// .bottom-menu__item
+	&__item {
+		a {
+			display: grid;
+			justify-items: center;
+			font-size: rem(12);
+			line-height: math.div(14, 12);
+			color: $Gray;
+
+			&::before {
+				font-size: rem(30);
+				margin-bottom: rem(4);
+			}
+
+			.control__link {
+				&::before {
+					font-size: rem(30);
+					margin-bottom: rem(4);
+				}
+			}
+		}
+
+		&._active {
+			a {
+				color: $Pink;
 			}
 		}
 	}

@@ -1,0 +1,117 @@
+// category ====================================================================================================
+.pane {
+    @include adaptiveValue("margin-top", 40, 24);
+    @include adaptiveValue("margin-bottom", 40, 24);
+
+    // .pane__sorting
+    &__sorting {
+        display: flex;
+        align-items: center;
+    }
+
+    // .pane__sorting-label
+    &__sorting-label {
+        @media (max-width: $tablet) {
+            display: none;
+        }
+
+        &:not(:last-child) {
+            margin-right: rem(16);
+        }
+    }
+
+    // .pane__sorting-class
+    &__sorting-class {
+    }
+
+    // .pane__sorting-select
+    &__sorting-select {
+    }
+
+    .select {
+        // .select__body
+        &__body {
+        }
+
+        // .select__title
+        &__title {
+            border: 0;
+            background-color: transparent;
+            font-weight: 700;
+            color: $Green;
+        }
+
+        // .select__value
+        &__value {
+            height: auto;
+            padding: 0;
+
+            &::before {
+                content: "\e90c";
+                @extend %ic;
+                margin-left: rem(8);
+                font-size: rem(10);
+            }
+        }
+
+        // .select__text
+        &__text {
+        }
+
+        // .select__input
+        &__input {
+        }
+
+        // .select__options
+        &__options {
+            top: rem(21);
+        }
+
+        // .select__scroll
+        &__scroll {
+        }
+
+        // .select__option
+        &__option {
+            font-size: rem(14);
+        }
+    }
+}
+
+.category {
+    // .category__container
+    &__container {
+    }
+
+    // .category__pane
+    &__pane {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    // .category__list
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(rem(160), 1fr));
+        @include adaptiveValue("column-gap", 24, 12, 1280, 1004, 1);
+        row-gap: rem(32);
+
+        @media (min-width: $mobileSmall) {
+            grid-template-columns: repeat(auto-fill, minmax(rem(200), 1fr));
+        }
+        @media (min-width: $mobile) {
+            grid-template-columns: repeat(auto-fill, minmax(rem(225), 1fr));
+        }
+        @media (max-width: $mobile) {
+            column-gap: rem(16);
+        }
+
+        // .product__link
+        .product {
+            &__link {
+                margin: 0;
+            }
+        }
+    }
+}

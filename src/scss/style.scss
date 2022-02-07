@@ -28,6 +28,7 @@ $Green: #aab56c;
 $Orange: #ff9255;
 
 $Shadow: 0px 2px 10px rgba(217, 224, 228, 0.4);
+$ShadowHover: 0px 2px 10px rgba(217, 224, 228, 1);
 
 $transition: 0.3s;
 
@@ -54,12 +55,15 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 $pc: em($containerWidth); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
 $tablet: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
 $mobile: em(767.98); // Телефоны L
+$mobileL: em(574.98); // Телефоны S
 $mobileSmall: em(479.98); // Телефоны S
 
 // Обнуление и общие параметры ============================================================================================================================================================================================== =============================================================================================== ===============================================================================================
 @import "base/null";
 
 body {
+	opacity: 0;
+
 	// Скролл заблокирован
 	.lock & {
 		overflow: hidden;
@@ -67,6 +71,8 @@ body {
 	}
 	// Сайт загружен
 	.loaded & {
+		transition: $transition ease opacity 0s;
+		opacity: 1;
 	}
 }
 
@@ -100,12 +106,13 @@ body {
 	// Отзывчивая
 	[class*="__container"] {
 		@if ($maxWidthContainer>0) {
-			max-width: rem($maxWidthContainer);
+			max-width: rem(1440);
 			box-sizing: content-box;
 			margin: 0 auto;
 		}
 		@if ($containerPadding>0) {
-			padding: 0 rem(math.div($containerPadding, 2));
+			@include adaptiveValue("padding-left", 135, 20, 1280, 768, 1);
+			@include adaptiveValue("padding-right", 135, 20, 1280, 768, 1);
 		}
 	}
 } @else {
@@ -148,3 +155,12 @@ body {
 
 // Подключение стилей отдельных страниц
 @import "pages/home";
+@import "pages/category";
+@import "pages/single-product";
+@import "pages/cart";
+@import "pages/checkout";
+@import "pages/delivery";
+@import "pages/faq";
+@import "pages/about";
+@import "pages/error";
+@import "pages/contacts";

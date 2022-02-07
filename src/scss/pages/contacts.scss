@@ -1,0 +1,64 @@
+.contacts {
+    // .contacts__container
+    &__container {
+        display: grid;
+        row-gap: rem(56);
+
+        @media (min-width: $tablet) {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    // .contacts__body
+    &__body {
+        @media (min-width: $tablet) {
+            @include adaptiveValue("max-width", 376, 270, 1280, 992, 1);
+        }
+
+        &:not(:last-child) {
+            @include adaptiveValue("margin-right", 50, 20, 1280, 992, 1);
+        }
+
+        strong {
+            color: $Pink;
+        }
+
+        a {
+            color: $Pink;
+            text-decoration: underline transparent from-font;
+            text-underline-offset: 3px;
+            transition: $transition ease text-decoration 0s;
+
+            @media (any-hover: hover) {
+                &:hover {
+                    text-decoration: underline $Pink from-font;
+                }
+            }
+            @media (any-hover: none) {
+                text-decoration: underline $Pink from-font;
+            }
+        }
+    }
+
+    // .contacts__form
+    &__form {
+        flex: 1;
+
+        @media (min-width: $mobileL) {
+            @include adaptiveValue("padding", 40, 20, 1280, 768, 1);
+            box-shadow: 0px 2px 10px rgba(217, 224, 228, 0.4);
+            border-radius: 10px;
+            background-color: $White;
+        }
+
+        // .form__submit
+        .form__submit {
+            .btn {
+                @media (max-width: $mobileSmall) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

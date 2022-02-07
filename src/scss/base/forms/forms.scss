@@ -1,17 +1,111 @@
 //<FORM>
 // Снипет (HTML):
 .form {
-	&__row {
+	// .form__title
+	&__title {
+		text-align: center;
+
+		&:not(:last-child) {
+			margin-bottom: rem(32);
+		}
 	}
+
+	// .form__column
 	&__column {
+		display: grid;
+		align-items: flex-end;
+		@include adaptiveValue("row-gap", 24, 16);
 	}
-	&__line {
+
+	// .form__label
+	&__label {
+		display: block;
+		@include adaptiveValue("font-size", 16, 14);
+		line-height: math.div(18, 14);
+		color: $Gray;
+		margin-bottom: rem(8);
+		cursor: pointer;
 	}
+
+	// .form__input-wrapper
+	&__input-wrapper {
+		display: flex;
+		align-items: center;
+		background-color: $LGray;
+		border-radius: rem(10);
+		position: relative;
+
+		@media (any-hover: hover) {
+			&:hover {
+				&::before {
+					animation: shake-bottom-center 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+				}
+			}
+		}
+
+		&::before {
+			display: block;
+			@extend %ic;
+			font-size: rem(20);
+			color: $Gray;
+			position: absolute;
+			left: rem(16);
+			top: 50%;
+			transform: translateY(-50%);
+			pointer-events: none;
+		}
+
+		.input {
+			background-color: transparent;
+			padding-left: rem(48);
+		}
+	}
+
+	// .form__input-person
+	&__input-person {
+		&::before {
+			content: "\e907";
+		}
+	}
+
+	// .form__input
 	&__input {
 	}
-	&__button {
+
+	// .form__input-mail
+	&__input-mail {
+		&::before {
+			content: "\e903";
+		}
 	}
-	&__error {
+
+	// .form__input-phone
+	&__input-phone {
+		&::before {
+			content: "\e904";
+		}
+	}
+
+	// .form__submit
+	&__submit {
+		display: grid;
+		justify-items: center;
+		margin-top: rem(32);
+		gap: rem(32);
+	}
+
+	// .form__privacy
+	&__privacy {
+		max-width: rem(385);
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	textarea {
+		@media (max-width: $mobileL) {
+			max-height: rem(150);
+		}
 	}
 }
 //</FORM>
@@ -22,7 +116,7 @@
 
 // <INPUTS>
 // Снипет (HTML): inp
-// @import "input";
+@import "input";
 
 // <CHECK>
 // Снипет (HTML): chk
@@ -30,19 +124,19 @@
 
 // <RADIO>
 // Снипет (HTML): opt
-// @import "radio";
+@import "radio";
 
 // <SELECT>
 // Снипет (HTML): sel
-// @import "select";
+@import "select";
 
 // <RATING>
 // Снипет (HTML): rating
-// @import "rating";
+@import "rating";
 
 // <QUANTITY>
 // Снипет (HTML): qa
-// @import "quantity";
+@import "quantity";
 
 // <RANGE>
 // Снипет (HTML):

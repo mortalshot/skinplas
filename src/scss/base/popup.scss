@@ -1,19 +1,25 @@
-body::after {
-	content: "";
-	background-color: rgba(0, 0, 0, 0.5);
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	opacity: 0;
-	transition: opacity 0.8s ease 0s;
-	pointer-events: none;
-	z-index: 149;
+body {
+	&::after {
+		content: "";
+		background-color: rgba(0, 0, 0, 0.5);
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		transition: opacity 0.8s ease 0s;
+		pointer-events: none;
+		z-index: 149;
+	}
+
+	&.popup-show {
+		&::after {
+			opacity: 1;
+		}
+	}
 }
-body.popup-show::after {
-	opacity: 1;
-}
+
 .popup {
 	position: fixed;
 	top: 0;
@@ -24,38 +30,65 @@ body.popup-show::after {
 	transition: visibility 0.8s ease 0s;
 	visibility: hidden;
 	pointer-events: none;
-}
-.popup_show {
-	z-index: 150;
-	visibility: visible;
-	overflow: auto;
-	pointer-events: auto;
-}
-.popup_show .popup__content {
-	visibility: visible;
-	transform: scale(1);
-}
-.popup__wrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	min-height: 100%;
-	flex: 1 1 auto;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.popup__content {
-	visibility: hidden;
-	transform: scale(0);
-	transition: transform 0.3s ease 0s;
-	background-color: #eee;
-	padding: 20px;
-	width: 100%;
-	max-width: 900px;
-	border-radius: 20px;
-	.lock & {
+
+	// .popup_show
+	&_show {
+		z-index: 150;
 		visibility: visible;
+		overflow: auto;
+		pointer-events: auto;
+
+		// .popup__content
+		.popup__content {
+			visibility: visible;
+			transform: scale(1);
+		}
+	}
+
+	// .popup__wrapper
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-height: 100%;
+		flex: 1 1 auto;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	// .popup__content
+	&__content {
+		visibility: hidden;
+		transform: scale(0);
+		transition: transform 0.3s ease 0s;
+		background-color: $White;
+		@include adaptiveValue("padding", 40, 20, 1280, 992, 1);
+		width: 100%;
+		max-width: rem(744);
+		border-radius: rem(10);
+
+		.lock & {
+			visibility: visible;
+		}
+	}
+
+	// .popup_mailing
+	&_mailing {
+		// .popup__content
+		.popup__content {
+			max-width: rem(420);
+		}
+
+		// .form__submit
+		.form__submit {
+			margin-top: rem(24);
+		}
+
+		// .form__privacy
+		.form__privacy {
+			text-align: left;
+		}
 	}
 }

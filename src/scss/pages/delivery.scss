@@ -1,0 +1,270 @@
+// checkout ====================================================================================================
+.delivery {
+    // .delivery__container
+    &__container {
+    }
+
+    // .delivery__payment
+    &__payment {
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 80, 56);
+        }
+    }
+
+    // .delivery__details
+    &__details {
+        display: grid;
+        @include adaptiveValue("gap", 70, 56);
+
+        @media (min-width: $mobile) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+.payment-delivery {
+    display: grid;
+    @include adaptiveValue("gap", 80, 24, 1280, 992, 1);
+    align-items: flex-start;
+
+    @media (min-width: $mobile) {
+        grid-template-columns: percent(520, 1170) 1fr;
+    }
+
+    // .payment-delivery__body
+    &__body {
+        display: grid;
+        @include adaptiveValue("row-gap", 24, 16);
+    }
+
+    // .payment-delivery__title
+    &__title {
+        text-transform: uppercase;
+
+        strong {
+            color: $Pink;
+        }
+    }
+
+    // .payment-delivery__price
+    &__price {
+        max-width: rem(340);
+
+        & > * {
+            &:not(:last-child) {
+                margin-bottom: rem(16);
+            }
+        }
+    }
+
+    // .payment-delivery__text
+    &__text {
+        a {
+            color: $Pink;
+            text-decoration: underline transparent from-font;
+            text-underline-offset: 3px;
+            transition: $transition ease text-decoration 0s;
+
+            @media (any-hover: hover) {
+                &:hover {
+                    text-decoration: underline $Pink from-font;
+                }
+            }
+            @media (any-hover: none) {
+                text-decoration: underline $Pink from-font;
+            }
+        }
+    }
+
+    // .payment-delivery__image
+    &__image {
+        overflow: hidden;
+        position: relative;
+
+        @media (min-width: $mobile) {
+            height: 100%;
+        }
+        @media (max-width: $mobile) {
+            padding-bottom: percent(121, 335);
+            grid-row-start: 1;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: rem(10);
+        }
+    }
+}
+
+.price-delivery {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include adaptiveValue("font-size", 16, 14);
+
+    // .price-delivery__caption
+    &__caption {
+        margin-right: rem(20);
+    }
+
+    // .price-delivery__val
+    &__val {
+        font-weight: 700;
+    }
+}
+
+.details-delivery {
+    // .details-delivery__title
+    &__title {
+        color: $Green;
+        text-transform: uppercase;
+        position: relative;
+
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 40, 16);
+        }
+
+        &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: rem(3);
+            background-color: $Green;
+            position: absolute;
+            left: 0;
+            bottom: rem(-8);
+        }
+    }
+
+    // .details-delivery__companies
+    &__companies {
+        display: flex;
+        flex-wrap: wrap;
+        margin: rem(-4);
+
+        @media (min-width: $mobile) {
+            margin: rem(-8);
+        }
+
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 40, 16);
+        }
+    }
+
+    // .spollers
+    .spollers {
+        gap: rem(16);
+
+        @media (min-width: $mobile) {
+            gap: rem(32);
+        }
+        // .spollers__title
+        &__title {
+            font-weight: 700;
+            text-transform: uppercase;
+
+            @media (min-width: $mobile) {
+                margin-bottom: rem(16);
+            }
+        }
+
+        // .spollers__body
+        &__body {
+            @include adaptiveValue("font-size", 16, 14);
+        }
+    }
+}
+
+.delivery-company {
+    flex: 0 0 25%;
+    padding: rem(4);
+
+    @media (min-width: $mobile) {
+        padding: rem(8);
+    }
+
+    a {
+        display: block;
+        position: relative;
+        padding-bottom: percent(84, 124);
+        transition: $transition ease opacity 0s;
+
+        @media (any-hover: hover) {
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}
+
+// spoller-section ====================================================================================================
+.spoller-section {
+    // .spoller-section__container
+    &__container {
+    }
+
+    // .spoller-section__title
+    &__title {
+        text-transform: uppercase;
+        color: $Pink;
+
+        @media (min-width: $tablet) {
+            max-width: percent(866, 1170);
+        }
+
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 32, 16);
+        }
+    }
+
+    // .spoller-section__spollers
+    &__spollers {
+        @media (min-width: $tablet) {
+            max-width: percent(866, 1170);
+        }
+
+        .spollers {
+            // .spollers__item
+            &__item {
+            }
+
+            // .spollers__title
+            &__title {
+                font-weight: 700;
+            }
+
+            // .spollers__body
+            &__body {
+                a {
+                    color: $Pink;
+                    text-decoration: underline transparent from-font;
+                    text-underline-offset: 3px;
+                    transition: $transition ease text-decoration 0s;
+
+                    @media (any-hover: hover) {
+                        &:hover {
+                            text-decoration: underline $Pink from-font;
+                        }
+                    }
+                    @media (any-hover: none) {
+                        text-decoration: underline $Pink from-font;
+                    }
+                }
+            }
+        }
+    }
+}

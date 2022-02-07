@@ -1,0 +1,170 @@
+// checkout ====================================================================================================
+.faq {
+    // .faq__support
+    &__support {
+    }
+
+    // .faq__container
+    &__container {
+    }
+
+    // .faq__tabs
+    &__tabs {
+        .tabs {
+            // .tabs__navigation
+            &__navigation {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(rem(163), 1fr));
+                gap: rem(8);
+                @include adaptiveValue("margin-bottom", 40, 24);
+            }
+
+            // .tabs__title
+            &__title {
+                font-weight: 700;
+                @include adaptiveValue("font-size", 24, 18);
+                line-height: math.div(30, 24);
+                letter-spacing: em(0.96, 24);
+                text-transform: uppercase;
+                color: $Gray;
+                text-decoration: none !important;
+                @include adaptiveValue("padding-bottom", 16, 8);
+                position: relative;
+                transition: $transition ease color 0s;
+
+                @media (any-hover: hover) {
+                    &:hover {
+                        color: $Pink;
+                    }
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: rem(3);
+                    background-color: $Gray;
+                    border-radius: rem(3);
+                    transition: $transition ease background-color 0s;
+                }
+
+                &._tab-active {
+                    color: $Pink;
+
+                    &::before {
+                        background-color: $Pink;
+                    }
+                }
+            }
+
+            // .tabs__content
+            &__content {
+            }
+
+            // .tabs__body
+            &__body {
+            }
+        }
+    }
+
+    // .faq__body
+    &__body {
+    }
+
+    // .faq__row
+    &__row {
+        display: grid;
+        @include adaptiveValue("column-gap", 48, 20, 1280, 992, 1);
+        row-gap: rem(32);
+
+        @media (min-width: $mobile) {
+            grid-template-columns: percent(320, 1170) 1fr;
+        }
+        @media (min-width: $tablet) {
+            grid-template-columns: percent(256, 1170) 1fr;
+        }
+    }
+
+    // .faq__nav
+    &__nav {
+        @media (max-width: $mobile) {
+            overflow-x: auto;
+            scrollbar-width: thin;
+            padding-bottom: rem(16);
+
+            &::-webkit-scrollbar {
+                height: rem(6);
+            }
+            &::-webkit-scrollbar-track {
+                background-color: $LGray;
+                border-radius: 3px;
+            }
+            &::-webkit-scrollbar-thumb {
+                border-radius: 3px;
+                background-color: $Pink;
+            }
+        }
+
+        ul {
+            @media (min-width: $mobile) {
+                display: grid;
+                gap: rem(16);
+            }
+            @media (max-width: $mobile) {
+                display: flex;
+
+                li {
+                    &:not(:last-child) {
+                        margin-right: rem(16);
+                    }
+                }
+            }
+        }
+
+        a {
+            font-weight: 700;
+            @include adaptiveValue("font-size", 20, 16);
+            line-height: math.div(25, 20);
+            transition: $transition ease color 0s;
+
+            @media (max-width: $mobile) {
+                white-space: nowrap;
+            }
+
+            @media (any-hover: hover) {
+                &:hover {
+                    color: $Pink;
+                }
+            }
+        }
+    }
+
+    // .faq__block
+    &__block {
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 80, 56);
+        }
+
+        // .spollers__title
+        .spollers__title {
+            font-weight: 700;
+        }
+
+        // .spollers__body
+        .spollers__body {
+            font-size: rem(16);
+            color: $Gray;
+        }
+    }
+
+    // .faq__block-title
+    &__block-title {
+        text-transform: uppercase;
+
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 32, 16);
+        }
+    }
+}

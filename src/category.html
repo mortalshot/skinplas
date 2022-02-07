@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"Главная"
+})
+
+<body>
+    <div class="wrapper">
+        @@include('html/_header.htm',{})
+        <main class="page">
+            <section class="category">
+                <div class="title">
+                    <div class="title__container">
+                        <h1 class="title__wrapper" style="background-image: url(img/banners/banner-1.jpg);">Каталог</h1>
+                    </div>
+                </div>
+
+                <div class="breadcrumbs">
+                    <div class="breadcrumbs__container breadcrumbs__wrapper" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+                        <span class="breadcrumbs__link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a href="home.html" itemprop="item">
+                                <span itemprop="name">Главная</span>
+                            </a>
+                        </span>
+                        <span class="breadcrumbs__separator">></span>
+                        <span class="breadcrumbs__title">Каталог</span>
+                    </div>
+                </div>
+
+                <div class="category__container">
+                    <div class="category__pane pane">
+                        <div class="pane__sorting">
+                            <div class="pane__sorting-label">Сортировать:</div>
+                            <select name="product-sorting" id="product-sorting" class="pane__sorting-class" data-scroll>
+                                <option value="По умолчанию" selected="selected">По умолчанию</option>
+                                <option value="По имени (A - Я)">По имени (A - Я)</option>
+                                <option value="По имени (Я - A)">По имени (Я - A)</option>
+                                <option value="По цене (возрастанию)">По цене (возрастанию)</option>
+                                <option value="По цене (убыванию)">По цене (убыванию)</option>
+                                <option value="По рейтингу (убыванию)">По рейтингу (убыванию)</option>
+                                <option value="По рейтингу (возрастанию)">По рейтингу (возрастанию)</option>
+                                <option value="По модели (A - Я)">По модели (A - Я)</option>
+                                <option value="По модели (Я - A)">По модели (Я - A)</option>
+                            </select>
+                        </div>
+                        <div class="pane__sorting">
+                            <div class="pane__sorting-label">Показывать:</div>
+                            <select name="product-results" id="product-results" class="pane__sorting-select" data-scroll>
+                                <option value="24" selected="selected">24</option>
+                                <option value="40">40</option>
+                                <option value="60">60</option>
+                                <option value="80">80</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="category__list">
+                        <article class="product">
+                            <a href="single-product.html" class="product__link"></a>
+                            <div class="product__thumbnail">
+                                <img src="img/products/product-1-1.jpg" alt="Кварцевый вибромассажер" class="swiper-lazy" loading="lazy">
+
+                                <button type="button" class="product__favorite _icon-favorite _active"></button>
+                            </div>
+                            <div class="product__body">
+                                <div class="product__title">
+                                    <h3>Кварцевый вибромассажер</h3>
+                                </div>
+
+                                <div class="product__footer">
+                                    <div class="product__price">
+                                        <span class="product__price-old _price-old">4 000</span>
+                                        <span class="product__price-current _price-current">3 700 ₽</span>
+                                    </div>
+                                    <button type="button" class="product__cart _icon-cart-2"></button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product">
+                            <a href="single-product.html" class="product__link"></a>
+                            <div class="product__thumbnail">
+                                <img src="img/products/product-2-1.jpg" alt="Лазерный эпилятор" class="swiper-lazy" loading="lazy">
+
+                                <button type="button" class="product__favorite _icon-favorite"></button>
+                            </div>
+                            <div class="product__body">
+                                <div class="product__title">
+                                    <h3>Лазерный эпилятор</h3>
+                                </div>
+
+                                <div class="product__footer">
+                                    <div class="product__price">
+                                        <span class="product__price-old _price-old">15 000</span>
+                                        <span class="product__price-current _price-current">10 000 ₽</span>
+                                    </div>
+                                    <button type="button" class="product__cart _icon-cart-2"></button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product">
+                            <a href="single-product.html" class="product__link"></a>
+                            <div class="product__thumbnail">
+                                <img src="img/products/product-3-1.jpg" alt="Вакуумный очиститель пор" class="swiper-lazy" loading="lazy">
+
+                                <button type="button" class="product__favorite _icon-favorite"></button>
+                            </div>
+                            <div class="product__body">
+                                <div class="product__title">
+                                    <h3>Вакуумный очиститель пор</h3>
+                                </div>
+
+                                <div class="product__footer">
+                                    <div class="product__price">
+                                        <span class="product__price-old _price-old">4 000</span>
+                                        <span class="product__price-current _price-current">3 700 ₽</span>
+                                    </div>
+                                    <button type="button" class="product__cart _icon-cart-2"></button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product">
+                            <a href="single-product.html" class="product__link"></a>
+                            <div class="product__thumbnail">
+                                <img src="img/products/product-4-1.jpg" alt="Кварцевый вибромассажер" class="swiper-lazy" loading="lazy">
+
+                                <button type="button" class="product__favorite _icon-favorite"></button>
+                            </div>
+                            <div class="product__body">
+                                <div class="product__title">
+                                    <h3>Далеко-далеко за словесными горами в стране.</h3>
+                                </div>
+
+                                <div class="product__footer">
+                                    <div class="product__price">
+                                        <span class="product__price-old _price-old">4 000</span>
+                                        <span class="product__price-current _price-current">3 700 ₽</span>
+                                    </div>
+                                    <button type="button" class="product__cart _icon-cart-2"></button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product">
+                            <a href="single-product.html" class="product__link"></a>
+                            <div class="product__thumbnail">
+                                <img src="img/products/product-5-1.jpg" alt="Кварцевый вибромассажер" class="swiper-lazy" loading="lazy">
+
+                                <button type="button" class="product__favorite _icon-favorite"></button>
+                            </div>
+                            <div class="product__body">
+                                <div class="product__title">
+                                    <h3>Кварцевый вибромассажер</h3>
+                                </div>
+
+                                <div class="product__footer">
+                                    <div class="product__price">
+                                        <span class="product__price-old _price-old">4 000</span>
+                                        <span class="product__price-current _price-current">3 700 ₽</span>
+                                    </div>
+                                    <button type="button" class="product__cart _icon-cart-2"></button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product">
+                            <a href="single-product.html" class="product__link"></a>
+                            <div class="product__thumbnail">
+                                <img src="img/products/product-3-1.jpg" alt="Кварцевый вибромассажер" class="swiper-lazy" loading="lazy">
+
+                                <button type="button" class="product__favorite _icon-favorite"></button>
+                            </div>
+                            <div class="product__body">
+                                <div class="product__title">
+                                    <h3>Кварцевый вибромассажер</h3>
+                                </div>
+
+                                <div class="product__footer">
+                                    <div class="product__price">
+                                        <span class="product__price-old _price-old">4 000</span>
+                                        <span class="product__price-current _price-current">3 700 ₽</span>
+                                    </div>
+                                    <button type="button" class="product__cart _icon-cart-2"></button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="product">
+                            <a href="single-product.html" class="product__link"></a>
+                            <div class="product__thumbnail">
+                                <img src="img/products/product-4-1.jpg" alt="Кварцевый вибромассажер" class="swiper-lazy" loading="lazy">
+
+                                <button type="button" class="product__favorite _icon-favorite"></button>
+                            </div>
+                            <div class="product__body">
+                                <div class="product__title">
+                                    <h3>Кварцевый вибромассажер</h3>
+                                </div>
+
+                                <div class="product__footer">
+                                    <div class="product__price">
+                                        <span class="product__price-old _price-old">4 000</span>
+                                        <span class="product__price-current _price-current">3 700 ₽</span>
+                                    </div>
+                                    <button type="button" class="product__cart _icon-cart-2"></button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <ul class="pagination">
+                        <li class="pagination__item _active"><span>1</span></li>
+                        <li class="pagination__item"><a href="">2</a></li>
+                        <li class="pagination__item"><a href="">4</a></li>
+                        <li class="pagination__item"><a href="">5</a></li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        @@include('html/_footer.htm',{})
+    </div>
+    @@include('html/_popup.htm',{})
+    @@include('html/_js.htm',{})
+</body>
+
+</html>

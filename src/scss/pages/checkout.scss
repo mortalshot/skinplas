@@ -1,0 +1,259 @@
+// checkout ====================================================================================================
+.checkout {
+    // .checkout__container
+    &__container {
+        @media (min-width: $mobile) {
+            display: grid;
+            align-items: flex-start;
+            grid-template-columns: 1fr rem(292);
+            @include adaptiveValue("column-gap", 64, 20, 1280, 992, 1);
+        }
+    }
+
+    // .checkout__body
+    &__body {
+        display: grid;
+        @include adaptiveValue("row-gap", 56, 32);
+    }
+
+    // .checkout__steps
+    &__steps {
+        display: grid;
+        @include adaptiveValue("row-gap", 48, 32);
+    }
+
+    // .checkout__step
+    &__step {
+    }
+
+    // .checkout__total
+    &__total {
+        .total-cart__descr {
+            @include adaptiveValue("font-size", 16, 14);
+            line-height: math.div(20, 16);
+            text-align: left;
+        }
+    }
+
+    // .checkout__basket
+    &__basket {
+    }
+}
+
+.step-checkout {
+    display: grid;
+    gap: rem(16);
+
+    // .step-checkout__title
+    &__title {
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 8, 0);
+        }
+    }
+
+    // .step-checkout__descr
+    &__descr {
+        color: $Gray;
+    }
+
+    // .step-checkout__options
+    &__options {
+        display: grid;
+        align-items: initial;
+        grid-template-columns: repeat(auto-fill, minmax(rem(256), 1fr));
+        @include adaptiveValue("gap", 24, 16);
+
+        .options {
+            // .options__item
+            &__item {
+                &:not(:last-child) {
+                    margin: 0;
+                }
+            }
+
+            // .options__label
+            &__label {
+                display: flex;
+                height: 100%;
+
+                @media (any-hover: hover) {
+                    &:hover {
+                        .options__wrapper {
+                            border-color: rgba($color: $Green, $alpha: 0.4);
+                        }
+                    }
+                }
+
+                &::before,
+                &::after {
+                    display: none;
+                }
+            }
+
+            // .options__input
+            &__input {
+                &:checked {
+                    & + .options__wrapper {
+                        border-color: $Green;
+                    }
+                }
+            }
+
+            // .options__wrapper
+            &__wrapper {
+                height: 100%;
+                flex: 1;
+                display: flex;
+                align-items: flex-start;
+                @include adaptiveValue("padding-top", 28, 20);
+                @include adaptiveValue("padding-bottom", 28, 20);
+                @include adaptiveValue("padding-left", 24, 16);
+                @include adaptiveValue("padding-right", 24, 16);
+                border: 2px solid $LGray;
+                border-radius: rem(10);
+                transition: $transition ease border-color 0s;
+            }
+
+            // .options__icon
+            &__icon {
+                flex-shrink: 0;
+                flex-basis: rem(20);
+                margin-right: rem(16);
+            }
+
+            // .options__body
+            &__body {
+                @include adaptiveValue("font-size", 16, 14);
+
+                p {
+                    color: $Gray;
+
+                    &:not(:last-child) {
+                        margin-bottom: rem(8);
+                    }
+                    &:not(:first-child) {
+                        margin-top: rem(8);
+                    }
+
+                    b {
+                        color: $mainColor;
+                    }
+                }
+            }
+        }
+    }
+
+    .select {
+        // .select_form
+        &_form {
+        }
+
+        // .select__body
+        &__body {
+        }
+
+        // .select__title
+        &__title {
+            border: 0;
+            background-color: $LGray;
+        }
+
+        // .select__value
+        &__value {
+            padding: rem(16) rem(24);
+            height: rem(52);
+
+            &::before {
+                content: "\e90b";
+                @extend %ic;
+                color: $Gray;
+                font-size: rem(18);
+            }
+        }
+
+        // .select__content
+        &__content {
+        }
+
+        // .select__options
+        &__options {
+            top: rem(52);
+            background-color: $LGray;
+            border: 0;
+        }
+
+        // .select__option
+        &__option {
+            padding-left: rem(24);
+            padding-right: rem(24);
+        }
+    }
+}
+
+.basket-checkout {
+    display: none;
+
+    @media (min-width: $mobile) {
+        display: block;
+        padding: rem(24);
+        background-color: $LGray;
+        border-radius: rem(10);
+
+        // .basket-checkout__caption
+        &__caption {
+            color: $Gray;
+            margin-bottom: rem(16);
+        }
+
+        // .basket-checkout__items
+        &__items {
+            display: grid;
+            gap: rem(24);
+        }
+
+        // .basket-checkout__item
+        &__item {
+        }
+    }
+}
+
+.basket-item {
+    @media (min-width: $mobile) {
+        display: flex;
+        align-items: center;
+
+        // .basket-item__img
+        &__img {
+            margin-right: rem(8);
+            position: relative;
+            flex: 0 0 rem(48);
+            padding-bottom: rem(48);
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+
+        // .basket-item__body
+        &__body {
+            display: grid;
+            gap: rem(4);
+        }
+
+        // .basket-item__price
+        &__price {
+            font-weight: 700;
+            color: $Gray;
+        }
+
+        // .basket-item__name
+        &__name {
+            line-height: math.div(20, 16);
+        }
+    }
+}

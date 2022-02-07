@@ -13,25 +13,25 @@
 		<button type="button" class="icon-menu"><span></span></button>
 
 		<div class="header__logo logo">
-			<a href="" class="logo__link"> <img src="@img/icons/logo.svg" alt="Skin plas" loading="lazy"> </a>
+			<a href="home.html" class="logo__link"> <img src="@img/icons/logo.svg" alt="Skin plas" loading="lazy"> </a>
 		</div>
 
 		<div class="header__auth"><a href="" class="_icon-user"></a></div>
 
 		<div class="header__right">
-			<ul class="header__top-menu menu" data-da=".header__mobile-wrapper, 768">
-				<li><a href="" class="_active">Политика конфиденциальности</a></li>
-				<li><a href="">О нас</a></li>
-				<li class="_desktop"><a href="">Вход / Регистрация</a></li>
+			<ul class="header__top-menu menu" data-da=".header__mobile-wrapper, 767.98, 1">
+				<li><a href="policy.html" class="">Политика конфиденциальности</a></li>
+				<li><a href="about.html">О нас</a></li>
+				<li class="_desktop menu__personal"><a href="">Вход / Регистрация</a></li>
 			</ul>
 
 			<div class="header__bottom-wrapper">
-				<ul class="header__bottom-menu menu" data-da=".header__mobile-wrapper, 768">
-					<li class="_desktop"><a href="" class="_active">ГЛАВНАЯ</a></li>
-					<li class="_desktop"><a href="">КАТАЛОГ</a></li>
-					<li><a href="">ОПЛАТА И ДОСТАВКА</a></li>
-					<li><a href="">КОНТАКТЫ</a></li>
-					<li><a href="">FAQ</a></li>
+				<ul class="header__bottom-menu menu" data-da=".header__mobile-wrapper, 767.98, 2">
+					<li class="_desktop"><a href="home.html" class="">Главная</a></li>
+					<li class="_desktop"><a href="category.html">Каталог</a></li>
+					<li><a href="delivery.html">Оплата и доставка</a></li>
+					<li><a href="contacts.html">Контакты</a></li>
+					<li><a href="faq.html">Faq</a></li>
 				</ul>
 
 				<div class="header__controls">
@@ -41,14 +41,94 @@
 							<span class="control__amount"></span>
 						</a>
 					</div>
-					<div class="header__control control">
-						<a href="" class="control__link">
+					<div class="header__control control small-basket">
+						<a href="cart.html" class="small-basket__link control__link">
 							<i class="_icon-cart"></i>
 							<span class="control__amount">2</span>
 						</a>
+
+						<div class="small-basket__preview">
+							<div class="small-basket__wrapper">
+								<ul class="small-basket__list">
+									<li class="small-basket__item">
+										<a href="single-product.html" class="small-basket__item-icon"><img src="@img/products/product-1-1.jpg" alt=""></a>
+
+										<div class="small-basket__body">
+											<div class="small-basket__price">
+												<span class="small-basket__price-current _price-current">5 400 ₽</span>
+												<span class="small-basket__price-old _price-old">7 400 ₽</span>
+											</div>
+											<a href="single-product.html" class="small-basket__name">Светодиодный аппарат для ухода за кожей 5в1</a>
+											<div class="small-basket__quantity">х2</div>
+											<div class="small-basket__remove"><button type="button">Удалить</button></div>
+										</div>
+									</li>
+									<li class="small-basket__item">
+										<a href="single-product.html" class="small-basket__item-icon"><img src="@img/products/product-2-1.jpg" alt=""></a>
+
+										<div class="small-basket__body">
+											<div class="small-basket__price">
+												<span class="small-basket__price-current _price-current">5 400 ₽</span>
+												<span class="small-basket__price-old _price-old">7 400 ₽</span>
+											</div>
+											<a href="single-product.html" class="small-basket__name">Светодиодный аппарат для ухода за кожей 5в1</a>
+											<div class="small-basket__quantity">х2</div>
+											<div class="small-basket__remove"><button type="button">Удалить</button></div>
+										</div>
+									</li>
+									<li class="small-basket__item">
+										<a href="single-product.html" class="small-basket__item-icon"><img src="@img/products/product-3-1.jpg" alt=""></a>
+
+										<div class="small-basket__body">
+											<div class="small-basket__price">
+												<span class="small-basket__price-current _price-current">5 400 ₽</span>
+												<span class="small-basket__price-old _price-old">7 400 ₽</span>
+											</div>
+											<a href="single-product.html" class="small-basket__name">Светодиодный аппарат для ухода за кожей 5в1</a>
+											<div class="small-basket__quantity">х2</div>
+											<div class="small-basket__remove"><button type="button">Удалить</button></div>
+										</div>
+									</li>
+								</ul>
+								<div class="small-basket__footer">
+									<div class="small-basket__total">
+										<div class="small-basket__caption">Итого:</div>
+										<div class="small-basket__total-price">5 400 ₽</div>
+									</div>
+									<a href="cart.html" class="small-basket__btn btn">В корзину</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </header>
+
+<nav class="bottom-menu" data-lp>
+	<ul class="bottom-menu__list">
+		<li class="bottom-menu__item">
+			<a href="home.html" class="_icon-home"> <span>Главная</span> </a>
+		</li>
+		<li class="bottom-menu__item _active">
+			<a href="category.html" class="_icon-catalog"> <span>Каталог</span> </a>
+		</li>
+		<li class="bottom-menu__item">
+			<a href="cart.html">
+				<div class="control__link _icon-favorite">
+					<span class="control__amount">2</span>
+				</div>
+				<div>Избранное</div>
+			</a>
+		</li>
+		<li class="bottom-menu__item">
+			<a href="cart.html">
+				<div class="control__link _icon-cart">
+					<span class="control__amount">2</span>
+				</div>
+				<div>Корзина</div>
+			</a>
+		</li>
+	</ul>
+</nav>

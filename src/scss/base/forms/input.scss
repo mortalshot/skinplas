@@ -8,18 +8,28 @@ textarea {
 	-moz-appearance: none;
 	appearance: none;
 }
+
 .input {
-	border-radius: 0 !important;
 	width: 100%;
 	display: block;
-	padding: 0px 20px;
-	border: 1px solid #eee;
-	&._focus {
+	padding: rem(16) rem(24);
+	background-color: $LGray;
+	border-radius: rem(10);
+	outline: 0;
+
+	&::placeholder {
+		color: $Gray;
+		transition: $transition ease opacity 0s;
 	}
-	&._error {
+
+	&:focus {
+		&::placeholder {
+			opacity: 0;
+		}
 	}
 }
+
 textarea.input {
 	resize: none;
-	padding: 0px 0px;
+	padding: rem(16) rem(24);
 }

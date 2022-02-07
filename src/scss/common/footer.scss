@@ -1,3 +1,91 @@
-//====================================================================================================
+// footer ====================================================================================================
+
+.footer {
+    @include adaptiveValue("padding-top", 40, 20);
+    @include adaptiveValue("padding-bottom", 40, 20);
+    background-color: $White;
+    box-shadow: $Shadow;
+    font-weight: 700;
+    font-size: rem(14);
+    line-height: math.div(18, 14);
+    letter-spacing: em(0.56, 14);
+
+    @media (max-width:$mobile){
+         margin-bottom: rem(56); 
+    }
+
+    // .footer__container
+    &__container {
+        justify-content: center;
+        display: grid;
+        gap: rem(24);
+
+        @media (min-width: $mobileSmall) {
+            grid-template-columns: 50% 1fr;
+        }
+        @media (min-width: $mobile) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    // .footer__menu
+    &__menu {
+        display: none;
+        @media (min-width: $mobile) {
+            display: grid;
+            gap: rem(16);
+
+            a {
+                text-decoration: underline transparent from-font;
+                text-underline-offset: 3px;
+                transition: $transition ease text-decoration 0s;
+
+                @media (any-hover: hover) {
+                    &:hover {
+                        text-decoration: underline $mainColor from-font;
+                    }
+                }
+            }
+        }
+    }
+
+    // .footer__middle
+    &__middle {
+        display: grid;
+        gap: rem(16);
+        justify-content: center;
+        text-align: center;
+
+        @media (min-width: $mobileSmall) and (max-width: $mobile) {
+            justify-content: flex-start;
+            text-align: left;
+        }
+    }
+
+    // .footer__logo
+    &__logo {
+        display: flex;
+        justify-content: center;
+
+        @media (min-width: $mobileSmall) and (max-width: $mobile) {
+            display: none;
+        }
+    }
+
+    // .footer__copyright
+    &__copyright {
+        color: $Gray;
+    }
+
+    // .footer__social
+    &__social {
+        display: grid;
+        justify-content: center;
+
+        @media (min-width: $mobileSmall) {
+            justify-content: flex-end;
+        }
+    }
+}
 
 //====================================================================================================

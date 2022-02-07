@@ -15,6 +15,18 @@
 	}
 }
 
+._icon-catalog:before {
+	content: "\e90e";
+}
+._icon-home:before {
+	content: "\e90f";
+}
+._icon-chevron-2:before {
+	content: "\e90c";
+}
+._icon-favorite-fill:before {
+	content: "\e90d";
+}
 ._icon-cart:before {
 	content: "\e901";
 }
